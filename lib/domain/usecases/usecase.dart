@@ -1,0 +1,6 @@
+import 'package:dartz/dartz.dart';
+import 'package:rick_app/core/errors/failures.dart';
+
+abstract class UseCase<Type, firstParam, secondParam> {
+  Future<Either<Failure, Type>> call(firstParam first, secondParam second);
+}

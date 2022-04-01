@@ -1,7 +1,9 @@
-abstract class CharacterEvent {
-  CharacterEvent();
-}
+part of 'character_bloc.dart';
 
-class RequestCharacterListEvent extends CharacterEvent {
-  RequestCharacterListEvent();
+@freezed
+class CharacterEvent with _$CharacterEvent {
+  const factory CharacterEvent.fetch({
+    required int page,
+    required String query,
+  }) = CharacterEventFetch;
 }

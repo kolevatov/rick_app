@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:rick_app/domain/entities/character_entity.dart';
+import 'package:rick_app/domain/entities/results_entity.dart';
 import 'package:rick_app/presentation/common/app_colors.dart';
-import 'package:rick_app/presentation/widgets/cached_images.dart';
 import 'package:rick_app/presentation/pages/character_details.dart';
+import 'package:rick_app/presentation/widgets/cached_images.dart';
 
 class CharacterCard extends StatelessWidget {
-  final CharacterEntity character;
+  final ResultsEntity character;
   const CharacterCard({required this.character, Key? key}) : super(key: key);
 
   @override

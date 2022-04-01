@@ -8,7 +8,6 @@ getAllCharacters - получение списка персонажей с па�
 searchCharacter - поиск персонажа
 */
 abstract class CharacterRepository {
-  Future<Either<Failure, List<CharacterEntity>>> getAllCharacters(int page);
-  Future<Either<Failure, List<CharacterEntity>>> searchCharacter(
-      String query, int page);
+  Future<Either<Failure, CharacterEntity>> getAllCharacters(
+      int page, String query);
 }

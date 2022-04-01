@@ -1,16 +1,15 @@
+import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rick_app/domain/entities/location_entity.dart';
 
-class LocationModel extends LocationEntity {
-  LocationModel({required String name, required String url})
-      : super(name: name, url: url);
+part 'location_model.freezed.dart';
+part 'location_model.g.dart';
 
-  // decode from JSON
-  factory LocationModel.fromJson(Map<String, dynamic> json) {
-    return LocationModel(
-        name: json['name'] as String, url: json['url'] as String);
-  }
+@freezed
+class Location extends LocationEntity with _$Location {
+  const factory Location({required String name, required String url}) =
+      _Location;
 
-  Map<String, dynamic> toJson() {
-    return {'name': name, 'url': url};
-  }
+  factory Location.fromJson(Map<String, dynamic> json) =>
+      _$LocationFromJson(json);
 }

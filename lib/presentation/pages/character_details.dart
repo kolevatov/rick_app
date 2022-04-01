@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rick_app/domain/entities/character_entity.dart';
+import 'package:rick_app/domain/entities/results_entity.dart';
 import 'package:rick_app/presentation/widgets/cached_images.dart';
 import 'package:intl/intl.dart';
 
 class CharacterDetails extends StatelessWidget {
-  final CharacterEntity character;
+  final ResultsEntity character;
   const CharacterDetails({Key? key, required this.character}) : super(key: key);
 
   @override

@@ -7,6 +7,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:rick_app/domain/entities/character_entity.dart';
 import 'package:rick_app/domain/entities/results_entity.dart';
 import 'package:rick_app/presentation/bloc/character_bloc/character_bloc.dart';
+import 'package:rick_app/presentation/common/app_colors.dart';
 import 'package:rick_app/presentation/widgets/character_card.dart';
 
 class CharactersWidget extends StatefulWidget {
@@ -52,7 +53,7 @@ class _CharactersWidgetState extends State<CharactersWidget> {
                 cursorColor: Colors.white,
                 decoration: InputDecoration(
                   filled: true,
-                  fillColor: const Color.fromRGBO(86, 86, 86, 0.8),
+                  fillColor: AppColors.cellBackground,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8.0),
                     borderSide: BorderSide.none,

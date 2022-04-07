@@ -6,6 +6,7 @@ import 'package:rick_app/data/repo/character_repository_impl.dart';
 import 'package:rick_app/domain/repo/character_repo.dart';
 import 'package:rick_app/domain/usecases/get_all_characters.dart';
 import 'package:rick_app/presentation/bloc/character_bloc/character_bloc.dart';
+import 'package:http/http.dart' as http;
 
 final sl = GetIt.instance;
 
@@ -27,7 +28,10 @@ Future<void> init() async {
 
   // DataSources
   sl.registerLazySingleton<CharacterRemoteDataSource>(
-      () => CharacterRemoteDataSourceImpl());
+      () => CharacterRemoteDataSourceImpl(client: sl<http.Client>()));
+
+  // HTTP Client
+  sl.registerLazySingleton<http.Client>(() => http.Client());
 
   // Core
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(

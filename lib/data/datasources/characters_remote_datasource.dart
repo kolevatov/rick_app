@@ -1,8 +1,10 @@
+import 'dart:convert';
 import 'dart:developer';
+
+import 'package:http/http.dart' as http;
+
 import 'package:rick_app/core/exception.dart';
 import 'package:rick_app/data/datasources/api_const.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 import 'package:rick_app/data/models/character_model.dart';
 
 abstract class CharacterRemoteDataSource {
@@ -14,11 +16,14 @@ abstract class CharacterRemoteDataSource {
 }
 
 class CharacterRemoteDataSourceImpl implements CharacterRemoteDataSource {
+  http.Client client;
   int searchResultMaxPage = 0;
+
+  CharacterRemoteDataSourceImpl({required this.client});
 
   Future<Characters> _getCharacterList(
       Uri uri, Map<String, dynamic> params) async {
-    var response = await http.get(uri);
+    var response = await client.get(uri);
 
     log('API endpoint status code: ' + response.statusCode.toString());
 
@@ -28,9 +33,11 @@ class CharacterRemoteDataSourceImpl implements CharacterRemoteDataSource {
       return Characters.fromJson(jsonData);
     } else if (response.statusCode == 404) {
       // No data found
+
       throw NoDataFoundException();
     } else {
       // request is failed
+
       throw ServerException();
     }
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rick_app/domain/entities/results_entity.dart';
 import 'package:rick_app/presentation/common/app_colors.dart';
+import 'package:rick_app/presentation/common/app_fonts.dart';
 import 'package:rick_app/presentation/pages/character_details.dart';
 import 'package:rick_app/presentation/widgets/cached_images.dart';
 
@@ -27,6 +28,7 @@ class CharacterCard extends StatelessWidget {
               imageUrl: character.image,
               width: 160,
               height: 160,
+              borderRadius: true,
             ),
             const SizedBox(width: 16.0),
             Expanded(
@@ -35,10 +37,7 @@ class CharacterCard extends StatelessWidget {
                 children: [
                   Text(
                     character.name,
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w700),
+                    style: Fonts.h1,
                   ),
                   const SizedBox(
                     height: 8,
@@ -60,7 +59,7 @@ class CharacterCard extends StatelessWidget {
                       ),
                       Text(
                         '${character.status} - ${character.species}',
-                        style: const TextStyle(color: Colors.white),
+                        style: Fonts.bodyWhite,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),

@@ -4,19 +4,23 @@ import 'package:flutter/material.dart';
 class CachedImage extends StatelessWidget {
   final String imageUrl;
   final double? width, height;
+  final bool borderRadius;
 
-  const CachedImage({
-    Key? key,
-    required this.imageUrl,
-    required this.width,
-    required this.height,
-  }) : super(key: key);
+  const CachedImage(
+      {Key? key,
+      required this.imageUrl,
+      required this.width,
+      required this.height,
+      required this.borderRadius})
+      : super(key: key);
 
   Widget _imageWidget(ImageProvider imageProvider) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(8), bottomLeft: Radius.circular(8)),
+        borderRadius: borderRadius
+            ? const BorderRadius.only(
+                topLeft: Radius.circular(8), bottomLeft: Radius.circular(8))
+            : const BorderRadius.all(Radius.circular(8)),
         image: DecorationImage(
           image: imageProvider,
           fit: BoxFit.cover,

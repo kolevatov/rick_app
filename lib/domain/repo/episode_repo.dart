@@ -5,6 +5,5 @@ import 'package:rick_app/domain/entities/episodes_entity.dart';
 /// Контракт с репозиторием данных.
 /// getAllEpisodes - получение списка эпизодов
 abstract class EpisodeRepository {
-  Future<Either<Failure, EpisodesEntity>> getAllEpisodes(
-      int page, String query);
+  Future<Either<Failure, EpisodesEntity>> getAllEpisodes(int page);
 }

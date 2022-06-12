@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_app/presentation/bloc/character_bloc/character_bloc.dart';
+import 'package:rick_app/presentation/bloc/episodes_bloc/episode_bloc.dart';
 import 'package:rick_app/presentation/common/app_colors.dart';
-import 'package:rick_app/presentation/pages/characters_page.dart';
+import 'package:rick_app/presentation/widgets/navigation_bar.dart';
 import 'package:rick_app/service_locator.dart' as di;
 
 void main() async {
@@ -22,13 +23,14 @@ class RickApp extends StatelessWidget {
         providers: [
           BlocProvider<CharacterBloc>(
               create: (context) => di.sl<CharacterBloc>()),
+          BlocProvider<EpisodeBloc>(create: (context) => di.sl<EpisodeBloc>()),
         ],
         child: MaterialApp(
           theme: ThemeData.dark().copyWith(
             backgroundColor: AppColors.mainBackground,
             scaffoldBackgroundColor: AppColors.mainBackground,
           ),
-          home: const CharactersPage(),
+          home: const NavigationWidget(),
         ));
   }
 }

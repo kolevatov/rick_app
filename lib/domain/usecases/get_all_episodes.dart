@@ -6,13 +6,13 @@ import 'package:rick_app/domain/usecases/usecase.dart';
 
 /// Usecase GetAllEpisodes
 /// Метод call - получение списка эпизодов с пагинацией
-class GetAllEpisodes extends UseCase<EpisodesEntity, int, String> {
+class GetAllEpisodes extends UseCaseSingleParam<EpisodesEntity, int> {
   final EpisodeRepository episodeRepo;
 
   GetAllEpisodes({required this.episodeRepo});
 
   @override
-  Future<Either<Failure, EpisodesEntity>> call(int page, String query) async {
-    return await episodeRepo.getAllEpisodes(page, query);
+  Future<Either<Failure, EpisodesEntity>> call(int page) async {
+    return await episodeRepo.getAllEpisodes(page);
   }
 }

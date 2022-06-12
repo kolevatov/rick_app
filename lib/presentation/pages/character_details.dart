@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rick_app/domain/entities/results_entity.dart';
+import 'package:rick_app/presentation/common/app_fonts.dart';
 import 'package:rick_app/presentation/widgets/cached_images.dart';
 import 'package:intl/intl.dart';
 
@@ -22,10 +23,7 @@ class CharacterDetails extends StatelessWidget {
             ),
             Text(
               character.name,
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w500),
+              style: Fonts.h1,
             ),
             const SizedBox(
               height: 16,
@@ -34,6 +32,7 @@ class CharacterDetails extends StatelessWidget {
               imageUrl: character.image,
               width: 200,
               height: 200,
+              borderRadius: false,
             ),
             const SizedBox(
               height: 16,
@@ -55,20 +54,28 @@ class CharacterDetails extends StatelessWidget {
                 ),
                 Text(
                   character.status,
-                  style: const TextStyle(color: Colors.white),
+                  style: Fonts.bodyWhite,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),
-            ..._buildText('Gender', character.gender),
-            ..._buildText('Species', character.species),
-            ..._buildText('Origin', character.origin.name),
-            ..._buildText(
-                'Number of episodes', character.episode.length.toString()),
-            ..._buildText('Last known location', character.location.name),
-            ..._buildText('Was created',
-                DateFormat.yMMMd().format(character.created).toString()),
+            Container(
+              width: 200,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ..._buildText('Gender', character.gender),
+                  ..._buildText('Species', character.species),
+                  ..._buildText('Origin', character.origin.name),
+                  ..._buildText('Number of episodes',
+                      character.episode.length.toString()),
+                  ..._buildText('Last known location', character.location.name),
+                  ..._buildText('Was created',
+                      DateFormat.yMMMd().format(character.created).toString()),
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -80,19 +87,11 @@ class CharacterDetails extends StatelessWidget {
       const SizedBox(
         height: 8,
       ),
-      Text(
-        title,
-        style: const TextStyle(
-            color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w500),
-      ),
+      Text(title, style: Fonts.bodyGray),
       const SizedBox(
         height: 4,
       ),
-      Text(
-        content,
-        style: const TextStyle(
-            color: Colors.white, fontSize: 14, fontWeight: FontWeight.w500),
-      ),
+      Text(content, style: Fonts.bodyWhite),
     ];
   }
 }

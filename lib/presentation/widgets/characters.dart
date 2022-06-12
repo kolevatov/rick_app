@@ -41,7 +41,7 @@ class _CharactersWidgetState extends State<CharactersWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder<CharacterBloc, CharacterState>(
         builder: (context, state) {
-      log('BlocBuilder: current state: ' + state.toString());
+      log('Characters BlocBuilder: current state: ' + state.toString());
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,

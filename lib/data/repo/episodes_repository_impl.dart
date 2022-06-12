@@ -11,11 +11,10 @@ class EpisodeRepositoryImpl implements EpisodeRepository {
   EpisodeRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<Either<Failure, EpisodesEntity>> getAllEpisodes(
-      int page, String query) async {
+  Future<Either<Failure, EpisodesEntity>> getAllEpisodes(int page) async {
     try {
-      final remoteCharacters = await remoteDataSource.getAllEpisodes(page);
-      return Right(remoteCharacters);
+      final remoteEpisodes = await remoteDataSource.getAllEpisodes(page);
+      return Right(remoteEpisodes);
     } on ServerException {
       return Left(ServerFailure());
     } on NoDataFoundException {
